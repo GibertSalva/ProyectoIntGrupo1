@@ -8,19 +8,19 @@ class Contacto(models.Model):
 class Usuario(models.Model):
     nombre = models.CharField(max_length=20)
     contraseña = models.CharField(max_length=20)
-    contacto = models.ForeingKey('Contacto', on_delete=models.CASACADE, null=False)
+    contacto = models.ForeignKey('Contacto', on_delete=models.CASCADE, null=False)
 
 class Propiedad(models.Model):
     titulo = models.CharField(max_length=20)
     ubicacion = models.CharField(max_length=20)
-    habitaciones = models.IntegerField()
-    dormitorios = models.IntegerField()
-    baños = models.IntegerField()
+    habitaciones = models.IntegerField(max_length=20)
+    dormitorios = models.IntegerField(max_length=20)
+    baños = models.IntegerField(max_length=20)
     imagenes = models.ImageField(max_length=100, upload_to='fotos/', blank=True)
-    descripcion = models.CharField()
+    descripcion = models.CharField(max_length=20)
 
 class Consulta(models.Model):
-    usuario = models.ForeingKey('Usuario', on_delete=models.CASACADE, null=False)
-    propiedad = models.ForeingKey('Propiedad', on_delete=models.CASACADE, null=False)
-    mensaje = models.CharField()
+    usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE, null=False)
+    propiedad = models.ForeignKey('Propiedad', on_delete=models.CASCADE, null=False)
+    mensaje = models.CharField(max_length=20)
  
