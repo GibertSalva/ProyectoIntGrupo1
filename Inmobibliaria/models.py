@@ -17,9 +17,9 @@ class Propiedad(models.Model):
     usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE, null=False)
     titulo = models.CharField(max_length=20)
     ubicacion = models.CharField(max_length=20)
-    habitaciones = models.IntegerField(max_length=20)
-    dormitorios = models.IntegerField(max_length=20)
-    baños = models.IntegerField(max_length=20)
+    habitaciones = models.IntegerField()
+    dormitorios = models.IntegerField()
+    baños = models.IntegerField()
     imagenes = models.ImageField(max_length=100, upload_to='fotos/', blank=True)
     descripcion = models.CharField(max_length=200)
     def __str__(self):

@@ -22,5 +22,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
+    path('', include('Inmobibliaria.urls')),
 ]
 
