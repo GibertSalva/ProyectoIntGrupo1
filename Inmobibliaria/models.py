@@ -27,6 +27,7 @@ class Ubicacion(models.Model):
 class Propiedad(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     titulo = models.CharField(max_length=20)
+    precio = models.IntegerField()
     ubicacion = models.ForeignKey('Ubicacion', on_delete=models.CASCADE, null=False)
     tipo = models.CharField(max_length=12,choices=TIPO_CHOICES,default='Casa')
     estado = models.CharField(max_length=8,choices=STATUS_CHOICES,default='Venta')

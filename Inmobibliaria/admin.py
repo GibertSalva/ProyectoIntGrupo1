@@ -4,7 +4,7 @@ from.models import *
 # Register your models here.
 
 class PropiedadAdmin(admin.ModelAdmin):
-    list_display = ['titulo',]
+    list_display = ['precio',]
 
 class ConsultaAdmin(admin.ModelAdmin):
     list_display = ['propiedad','mensaje']
