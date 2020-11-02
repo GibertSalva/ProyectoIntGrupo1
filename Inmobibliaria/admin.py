@@ -8,6 +8,7 @@ class PropiedadAdmin(admin.ModelAdmin):
 
 class ConsultaAdmin(admin.ModelAdmin):
     list_display = ['usuario','propiedad','mensaje']
+    
 
 admin.site.register(Contacto)
 admin.site.register(Usuario)
