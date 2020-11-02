@@ -1,0 +1,36 @@
+{% extends 'Inmobibliaria/base.html' %}
+
+{% block content %}
+{% include 'Inmobibliaria/imagenes.html' %}
+<div class="container">
+    <div class="row">
+      {% for pro in propiedad %}
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-image">
+              <img class="materialboxed" src = "{{ pro.imagenes.url }}" width="200" height="200">
+              <span class="card-title text-darken-2" >{{pro.titulo}}</span>
+            </div>
+            <div class="card-content">
+              <!-- <h5>{{pro.usuario.username}}</h5> -->
+              <h6 class="truncate"><b>{{pro.ubicacion.calle}} {{pro.ubicacion.numero}}</b></h6>
+              <p class="truncate">Habitaciones: {{pro.habitaciones}}</p>
+              <p class="truncate">Baños: {{pro.baños}}</p>
+              <p class="truncate">m2: {{pro.tamaño}}</p>
+              <p class="truncate"><b>{{pro.tipo}} en {{pro.estado}}</b></p>
+            </div>
+            <div class="card-action">
+              <a href="propiedad/{{pro.id}}">Mas Información</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.materialboxed');
+        var instances = M.Materialbox.init(elems);
+      });
+      </script>
+{% endblock %}
