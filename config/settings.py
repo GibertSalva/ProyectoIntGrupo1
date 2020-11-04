@@ -25,13 +25,14 @@ SECRET_KEY = '!t$41l+c2m6#s&(u!+s42b$le9a$na44)k*9-l46d^8agcy4j&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'jet',
+    "users.apps.UsersConfig",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

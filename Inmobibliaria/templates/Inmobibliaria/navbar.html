@@ -1,18 +1,19 @@
+{% load static %}
 <div class="navbar-fixed">
-    <nav class="blue-grey">
+    <nav class="blue-grey darken-4">
       <div class="nav-wrapper container">
-        <a href="#" class="brand-logo">Logo</a>
+        <a class="brand-logo text-warning" href="{% url "home" %}" >Inmobibliaria OCLIPO</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="nav-mobile" class="right hide-on-med-and-down text-warning">
           <li><a href="/">Inicio</a></li>
-          <li><a href="badges.html">Sobre Nosotros</a></li>
-          {% if user.is_authenticated %}
-            <li><a href="">{{user.username}}</a></li>
-            <li><a href="/logout">Cerrar Cesión</a></li>
-          {% else %}
-            <li><a href="/login">Iniciar Sesión</a></li>
-            <li><a href="/register">Registrarse</a></li>
-          {% endif %}
+          <li><a href="">Sobre Nosotros</a></li>
+
+{% if user.is_authenticated %}
+            <li><a href="{% url "Logout" %}">Cerrar Cesión</a></li>
+{% else %}
+            <li><a href="{% url "login" %}">Iniciar Sesión</a></li>
+            <li><a href="{% url "register" %}">Registrarse</a></li>
+{% endif %}
   
           
         </ul>
