@@ -2,4 +2,52 @@
 
 {% block content %}
 
+
+<div class="container">
+<div class="row">
+    <div class="col s12 m12">
+        <h4><strong>{{propiedad.titulo}}</strong></h4><hr><br>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m8">
+        <img  width="100%" height="500" src="{{ propiedad.imagenes.url }}">
+    </div>
+    <div class="col s12 m4">
+        <div class="card-panel white">
+        <h5>Detalle</h5><hr>
+        <p><strong>Id Propiedad:</strong> {{propiedad.id}}</p>
+        <p><strong>Propietario:</strong> {{propiedad.usuario}}</p>
+        <p><strong>Precio:</strong> ${{propiedad.precio}}</p>
+        <p><strong>Tamaño:</strong> {{propiedad.tamaño}}</p>
+        <p><strong>Habitaciones:</strong> {{propiedad.habitaciones}}</p>
+        <p><strong>Baños:</strong> {{propiedad.baños}}</p>
+        <p><strong>Tipo:</strong> {{propiedad.tipo}}</p>
+        <p><strong>Estado:</strong> {{propiedad.estado}}</p>
+      </div>
+    </div>
+</div>
+<div class="row">    
+    <div class="col s12 m12">
+        <div class="card-panel white">
+        <h5>Descripción</h5><hr>
+        <p>{{propiedad.descripcion}}</p>
+      </div>
+    </div>
+</div>
+<div class="row">    
+    <div class="col s12 m12">
+        <div class="card-panel white">
+        <h5>Ubicacion</h5><hr>
+        <p>{{propiedad.ubicacion.calle}}</p>
+      </div>
+    </div>
+</div>
+    
+    
+
+
+
+</div>
+
 {% endblock %}

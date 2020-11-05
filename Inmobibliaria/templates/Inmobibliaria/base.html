@@ -13,6 +13,14 @@
 
 {% include 'Inmobibliaria/navbar.html' %}
 
+{% if messages %}
+      {% for message in messages %}
+<div style="text-align: center ;background-color: #43DC7E; color: white; font-size: 1.1rem;">
+        {{message}}
+      </div>
+      {% endfor %}
+    {% endif %}
+
 {% block content %}
 
 

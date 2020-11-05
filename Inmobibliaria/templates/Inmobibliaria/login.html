@@ -1,0 +1,17 @@
+{% extends 'Inmobibliaria/base.html' %}
+{% block content %}
+<br>
+<div style="padding: 20px;" class="container white">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button class="btn waves-effect waves-light" type="submit" id="submit">Iniciar Sesión<i class="material-icons right">send</i></button>
+                <div>
+                    <small> Aun no tienes una cuenta? <a href="/register"> Regístrate</a></small>
+                </div>
+
+            </form>
+</div>
+
+{% endblock %}
