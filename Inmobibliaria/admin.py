@@ -3,8 +3,12 @@ from.models import *
 
 # Register your models here.
 
+class ImagenInline(admin.TabularInline):
+    model = Imagen
+
 class PropiedadAdmin(admin.ModelAdmin):
     list_display = ['precio',]
+    inlines = [ImagenInline,]
 
 class ConsultaAdmin(admin.ModelAdmin):
 

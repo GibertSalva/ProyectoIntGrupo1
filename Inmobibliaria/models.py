@@ -24,6 +24,7 @@ class Ubicacion(models.Model):
     def __str__(self):
         return "{} {}".format(self.calle,self.numero)
 
+
 class Propiedad(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     titulo = models.CharField(max_length=20)
@@ -34,10 +35,13 @@ class Propiedad(models.Model):
     habitaciones = models.IntegerField()
     baños = models.IntegerField()
     tamaño = models.IntegerField()
-    imagenes = models.ImageField(max_length=100, upload_to='fotos/', blank=True)
     descripcion = models.CharField(max_length=200)
     def __str__(self):
         return "{}".format(self.titulo)
+
+class Imagen(models.Model):
+    propiedad = models.ForeignKey(Propiedad, on_delete=models.CASCADE,null=False)
+    foto = models.ImageField(upload_to='fotos/', null=True)
 
 
 class Consulta(models.Model):
