@@ -16,8 +16,8 @@ TIPO_CHOICES = [
     ]
 
 class Ubicacion(models.Model):
+    provincia = models.CharField(max_length=30)
     ciudad = models.CharField(max_length=30)
-    estado = models.CharField(max_length=30)
     barrio = models.CharField(max_length=30)
     calle = models.CharField(max_length=30)
     numero = models.IntegerField()
@@ -30,12 +30,12 @@ class Propiedad(models.Model):
     titulo = models.CharField(max_length=20)
     precio = models.IntegerField()
     ubicacion = models.ForeignKey('Ubicacion', on_delete=models.CASCADE, null=False)
-    tipo = models.CharField(max_length=12,choices=TIPO_CHOICES,default='Casa')
+    tipo = models.CharField(max_length=12,choices=TIPO_CHOICES)
     estado = models.CharField(max_length=8,choices=STATUS_CHOICES,default='Venta')
     habitaciones = models.IntegerField()
     baños = models.IntegerField()
     tamaño = models.IntegerField()
-    descripcion = models.CharField(max_length=200)
+    descripcion = models.TextField(max_length=200)
     def __str__(self):
         return "{}".format(self.titulo)
 

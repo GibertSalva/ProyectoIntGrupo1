@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from.models import *
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, PropiedadForm
 from django.contrib import messages
 
 
@@ -32,3 +32,11 @@ def register(request):
         form = UserRegisterForm()
     context = {'form':form}
     return render(request,"Inmobibliaria/register.html",context)
+
+
+def formularioview(request):
+    data = {
+        'form':PropiedadForm()
+    }
+        
+    return render(request,"Inmobibliaria/formulario.html",data)
