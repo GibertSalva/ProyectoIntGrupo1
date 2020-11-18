@@ -11,6 +11,7 @@ urlpatterns = [
     path("register/", views.register),
     path("login/", LoginView.as_view(template_name = 'Inmobibliaria/login.html')),
     path("logout/", LogoutView.as_view(template_name = 'Inmobibliaria/logout.html')),
-    path("formulario/", formularioview)
+    path("formulario/", formularioview, name = "add_propiedad")
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
  

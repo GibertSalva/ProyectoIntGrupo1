@@ -1,7 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from.models import *
-from .forms import UserRegisterForm, PropiedadForm
+from .forms import UserRegisterForm, PropiedadModelForm, ImagenModelForm
 from django.contrib import messages
+from django.forms.models import inlineformset_factory
+from django.views.generic.edit import CreateView, UpdateView
+from django.http import HttpResponse, HttpResponseRedirect
+
+
 
 
 # Create your views here.
@@ -35,8 +40,59 @@ def register(request):
 
 
 def formularioview(request):
-    data = {
-        'form':PropiedadForm()
-    }
+    current_user = get_object_or_404(User, pk = request.user.pk)
+    propiedad = Propiedad()
+    form = PropiedadModelForm(instance=propiedad)
+    ImagenInlineFormSet = inlineformset_factory(Propiedad, Imagen, fields=('foto',))
+    
+    if request.method == 'POST':
+        form = PropiedadModelForm(request.POST, request.FILES)
+        formset = ImagenInlineFormSet(request.POST, request.FILES)
+           
+
+        if form.is_valid():
+            created_propiedad = form.save(commit = False)
+            created_propiedad.usuario = current_user
+            formset = ImagenInlineFormSet(request.POST, request.FILES, instance=created_propiedad)
+
         
-    return render(request,"Inmobibliaria/formulario.html",data)
+            if formset.is_valid():
+                created_propiedad.save()
+                formset.save()
+                return redirect ('/')
+    else:
+        form = PropiedadModelForm(instance=propiedad)
+        formset = ImagenInlineFormSet()
+        
+    return render(request,"Inmobibliaria/formulario.html",{'form':form,'formset':formset})
+    
+'''
+class PropiedadCreate(CreateView):
+    model = Propiedad
+    template_name = 'Inmobibliaria/formulario.html'
+    form_class = ImagenModelForm
+    second_form_class = PropiedadModelForm
+
+
+    def get_context_data(self,**kwargs):
+        context = super(PropiedadCreate, self).get_context_data(**kwargs)
+        if 'form' not in context:
+            context['form'] = self.form_class(self.request.GET)
+        if 'form2' not in context:
+            context['form2'] = self.second_form_class(self.request.GET)
+        return context
+
+    def post(self,request, *args, **kwargs):
+        self.object = self.get_object
+        form = self.form_class(request.POST, request.FILES)
+        form2 = self.second_form_class(request.POST, request.FILES)
+
+        if form.is_valid() and form2.is_valid():
+            imagenes = form.save(commit=False)
+            imagenes.propiedad = form2.save()
+            imagenes.save()
+            return redirect('/')
+        else:
+            return self.render_to_response(self.get_context_data(form=form, form2=form2))
+'''
+

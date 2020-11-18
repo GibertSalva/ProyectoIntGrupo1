@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from.models import *
+from django.forms.models import inlineformset_factory
 #from .models import Post
 
 class UserRegisterForm(UserCreationForm):
@@ -24,13 +25,9 @@ class UbicacionForm(forms.ModelForm):
 
 		fields = [
 			'provincia',
-			'ciudad',
-			'barrio',
-			'calle',
-			'numero',
 		]
 
-class PropiedadForm(forms.ModelForm):
+class PropiedadModelForm(forms.ModelForm):
 	
 	class Meta:
 		model = Propiedad
@@ -41,11 +38,27 @@ class PropiedadForm(forms.ModelForm):
 			'tipo',
 			'estado',
 			'ubicacion',
+			'barrio',
+			'calle',
+			'numero',
 			'habitaciones',
 			'baños',
 			'tamaño',
 			'descripcion',
 		]
+
+class ImagenModelForm(forms.ModelForm):
+
+	class Meta:
+		model = Imagen
+		fields = ['foto']
+
+'''
+ImagenInlineFormSet = inlineformset_factory(
+    Propiedad, Imagen, form=ImagenForm, 
+    extra=3, can_delete=True)
+'''
+
 '''
 	labels = {
 		'titulo':'Titulo',
