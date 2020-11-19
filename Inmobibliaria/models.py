@@ -34,7 +34,7 @@ class Propiedad(models.Model):
     habitaciones = models.IntegerField()
     baños = models.IntegerField()
     tamaño = models.IntegerField()
-    descripcion = models.TextField(max_length=200)
+    descripcion = models.TextField(max_length=2000)
     def __str__(self):
         return "{}".format(self.titulo)
 
