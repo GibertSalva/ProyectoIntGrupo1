@@ -25,6 +25,7 @@ def propiedadview(request,id):
     indiceEnCarusel = ["#one", "#two", "#three"] #El carusel necesita esos datos en el href para funcionar
     return render(request,"Inmobibliaria/propiedad.html",{"propiedad":propiedad, "imagenes": imagenesLibro,"indiceEnCarusel":indiceEnCarusel,"host": request.get_host()})
 
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -65,7 +66,9 @@ def formularioview(request):
         formset = ImagenInlineFormSet()
         
     return render(request,"Inmobibliaria/formulario.html",{'form':form,'formset':formset})
-    
+
+
+
 '''
 class PropiedadCreate(CreateView):
     model = Propiedad

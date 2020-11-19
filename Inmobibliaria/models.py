@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 
@@ -34,7 +35,7 @@ class Propiedad(models.Model):
     habitaciones = models.IntegerField()
     baños = models.IntegerField()
     tamaño = models.IntegerField()
-    descripcion = models.TextField(max_length=2000)
+    descripcion = models.TextField(max_length=200)
     def __str__(self):
         return "{}".format(self.titulo)
 
@@ -43,10 +44,14 @@ class Imagen(models.Model):
     foto = models.ImageField(upload_to='fotos/', null=True)
 
 
-class Consulta(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
-    propiedad = models.ForeignKey('Propiedad', on_delete=models.CASCADE, null=False)
-    mensaje = models.CharField(max_length=200)
+class Comentario(models.Model):
+    propiedad = models.ForeignKey(Propiedad, related_name="comments", on_delete=models.CASCADE, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    mensaje = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return "{}".format(self.usuario)
+        return "%s - %s" % (self.propiedad.titulo, self.user)
+
+
+
 

@@ -1,27 +1,39 @@
 {% extends 'Inmobibliaria/base.html' %}
 
 {% block content %}
-<script> 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems);
-  });
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
 </script>
-<div style="padding: 20px;" class="container white">
-<form action="." method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    {% for form_imagen in formset %}
-        {{ form_imagen }} <br><br>
-    {% endfor %}
-
-
-  {{ formset.management_form }}
-
-    <button class="btn waves-effect waves-light" type="submit" id="submit">Publicar<i class="material-icons right">send</i></button>
-
-</form>
+<div style="margin-left: 20px" class="col s12 m12">
+    <h4><strong>Publicar: </strong></h4>
 </div>
+<div class="row">
+    <div class="col s12 m20 ">
+        <div class="card-panel grey">
+            <div style="padding: 20px;" class="container white">
+                <form action="." method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    {% for form_imagen in formset %}
+                    {{ form_imagen }} <br><br>
+                    {% endfor %}
+
+
+                    {{ formset.management_form }}
+
+                    <button class="btn waves-effect waves-light" type="submit" id="submit">Publicar<i
+                            class="material-icons right">send</i></button>
+
+                </form>
+            </div>
+            </span>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

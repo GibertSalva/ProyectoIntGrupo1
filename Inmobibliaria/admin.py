@@ -10,11 +10,9 @@ class PropiedadAdmin(admin.ModelAdmin):
     list_display = ['precio',]
     inlines = [ImagenInline,]
 
-class ConsultaAdmin(admin.ModelAdmin):
 
-    list_display = ['usuario','propiedad','mensaje']
     
 
 admin.site.register(Propiedad,PropiedadAdmin)
-admin.site.register(Consulta,ConsultaAdmin)
+admin.site.register(Comentario)
 admin.site.register(Ubicacion)

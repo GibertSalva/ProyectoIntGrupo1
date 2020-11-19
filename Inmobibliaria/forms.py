@@ -53,6 +53,14 @@ class ImagenModelForm(forms.ModelForm):
 		model = Imagen
 		fields = ['foto']
 
+
+
+
+
+
+
+
+
 '''
 ImagenInlineFormSet = inlineformset_factory(
     Propiedad, Imagen, form=ImagenForm, 
@@ -83,3 +91,4 @@ ImagenInlineFormSet = inlineformset_factory(
 		'descripcion',
 	}
 '''
+
