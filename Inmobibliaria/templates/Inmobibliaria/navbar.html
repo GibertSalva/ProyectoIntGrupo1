@@ -23,9 +23,9 @@
   </div>
   <ul class="sidenav" id="mobile-demo">
     <li><a href="/" class="amber-text text-darken-2">Inicio</a></li>
-    <li><a href="badges.html" class="">Sobre Nosotros</a></li>
+    <li><a href="#" class="">Sobre Nosotros</a></li>
     {% if user.is_authenticated %}
-      <li><a href="" class="amber-text text-darken-2">{{pro.usuario}}</a></li>
+      <li><a href="" class="amber-text text-darken-2">{{user.username}}</a></li>
       <li><a href="/logout" class="">Cerrar Cesión</a></li>
     {% else %}
       <li><a href="/login" class="">Iniciar Sesión</a></li>

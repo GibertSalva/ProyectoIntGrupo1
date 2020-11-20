@@ -32,7 +32,7 @@ class Propiedad(models.Model):
     calle = models.CharField(max_length=30)
     numero = models.IntegerField()
     tipo = models.CharField(max_length=12,choices=TIPO_CHOICES)
-    estado = models.CharField(max_length=8,choices=STATUS_CHOICES,default='Venta')
+    estado = models.CharField(max_length=8,choices=STATUS_CHOICES)
     habitaciones = models.IntegerField()
     baños = models.IntegerField()
     tamaño = models.IntegerField()

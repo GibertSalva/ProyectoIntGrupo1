@@ -71,14 +71,18 @@ def register(request):
 
 
 def formularioview(request):
+    data = {
+        'foto',
+    }
     current_user = get_object_or_404(User, pk = request.user.pk)
     propiedad = Propiedad()
     form = PropiedadModelForm(instance=propiedad)
-    ImagenInlineFormSet = inlineformset_factory(Propiedad, Imagen, fields=('foto',))
+    ImagenInlineFormSet = inlineformset_factory(Propiedad, Imagen, fields=('foto',),min_num=1)
     
     if request.method == 'POST':
         form = PropiedadModelForm(request.POST, request.FILES)
         formset = ImagenInlineFormSet(request.POST, request.FILES)
+        formset = ImagenInlineFormSet(data)
            
 
         if form.is_valid():
