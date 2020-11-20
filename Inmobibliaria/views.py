@@ -26,9 +26,9 @@ def propiedadview(request,id):
     imagenesLibro = Imagen.objects.filter(propiedad = propiedad)
     indiceEnCarusel = ["#one", "#two", "#three"] #El carusel necesita esos datos en el href para funcionar
 
-    current_user = get_object_or_404(User, pk = request.user.pk)
     if request.method == 'POST':
         form = ComentarioModelForm(request.POST)
+        current_user = get_object_or_404(User, pk = request.user.pk)
         if form.is_valid():
             created_comentario = form.save(commit=False)
             created_comentario.user = current_user
