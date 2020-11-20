@@ -54,6 +54,12 @@ class ImagenModelForm(forms.ModelForm):
 		fields = ['foto']
 
 
+class ComentarioModelForm(forms.ModelForm):
+	class Meta:
+		model = Comentario
+		fields = ['mensaje']
+
+
 
 
 

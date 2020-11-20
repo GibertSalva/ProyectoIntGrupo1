@@ -1,17 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from.models import *
-from .forms import UserRegisterForm, PropiedadModelForm, ImagenModelForm
+from .forms import UserRegisterForm, PropiedadModelForm, ComentarioModelForm
 from django.contrib import messages
 from django.forms.models import inlineformset_factory
 from django.views.generic.edit import CreateView, UpdateView
 from django.http import HttpResponse, HttpResponseRedirect
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 
 
 # Create your views here.
 def homeview(request):
-    propiedades = Propiedad.objects.all()
+    propiedades = Propiedad.objects.all().order_by('-fecha')
     imagenes = []#Array donde voy a guardar las imagenes
 
     for pro in propiedades: #Itero los libros
@@ -23,7 +25,35 @@ def propiedadview(request,id):
     propiedad = Propiedad.objects.get(id = id)
     imagenesLibro = Imagen.objects.filter(propiedad = propiedad)
     indiceEnCarusel = ["#one", "#two", "#three"] #El carusel necesita esos datos en el href para funcionar
-    return render(request,"Inmobibliaria/propiedad.html",{"propiedad":propiedad, "imagenes": imagenesLibro,"indiceEnCarusel":indiceEnCarusel,"host": request.get_host()})
+
+    current_user = get_object_or_404(User, pk = request.user.pk)
+    if request.method == 'POST':
+        form = ComentarioModelForm(request.POST)
+        if form.is_valid():
+            created_comentario = form.save(commit=False)
+            created_comentario.user = current_user
+            created_comentario.propiedad = propiedad
+            if created_comentario.user != created_comentario.propiedad.usuario:
+                created_comentario.save()
+                subject = "Has recibido una consulta de tu propiedad " + propiedad.titulo
+                message = "De: " + created_comentario.user.username + "\nCorreo: "+ created_comentario.user.email + "\n" + created_comentario.mensaje 
+                email_from = settings.EMAIL_HOST_USER
+                recipient_list = [propiedad.usuario.email]
+                send_mail(subject, message, email_from, recipient_list) 
+
+
+                messages.success(request, f'Tu consulta ha sido enviada!')
+                return redirect('/')
+            
+            else:
+                messages.success(request, f'No puedes consultar una propiedad tuya')
+
+            
+    else:
+        form = ComentarioModelForm()
+
+
+    return render(request,"Inmobibliaria/propiedad.html",{"propiedad":propiedad, "imagenes": imagenesLibro,"indiceEnCarusel":indiceEnCarusel,"host": request.get_host(),"form":form})
 
 
 def register(request):
@@ -69,7 +99,7 @@ def formularioview(request):
 
 
 
-'''
+''' 
 class PropiedadCreate(CreateView):
     model = Propiedad
     template_name = 'Inmobibliaria/formulario.html'
