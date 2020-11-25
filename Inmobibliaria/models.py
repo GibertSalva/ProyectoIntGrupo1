@@ -37,7 +37,6 @@ class Propiedad(models.Model):
     baños = models.IntegerField()
     tamaño = models.IntegerField()
     descripcion = models.TextField(max_length=2000)
-    auto_now = timezone.now()
     fecha = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return "{}".format(self.titulo)
@@ -45,6 +44,9 @@ class Propiedad(models.Model):
 class Imagen(models.Model):
     propiedad = models.ForeignKey(Propiedad, on_delete=models.CASCADE,null=False)
     foto = models.ImageField(upload_to='fotos/', null=True)
+    def __str__(self):
+        return "{}".format(self.foto)
+    
 
 
 class Comentario(models.Model): 
