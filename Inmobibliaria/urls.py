@@ -6,13 +6,15 @@ from.import views
 from django.contrib.auth.views import LoginView,LogoutView
 
 urlpatterns = [
-    path('', homeview, name = "home"),
-    path("propiedad/<str:id>", propiedadview),
+    path('', views.homeview, name = "home"),
+    path("propiedad/<str:id>", views.propiedadview),
     path("register/", views.register),
     path("login/", LoginView.as_view(template_name = 'Inmobibliaria/login.html')),
     path("logout/", LogoutView.as_view(template_name = 'Inmobibliaria/logout.html')),
-    path("formulario/", formularioview, name = "add_propiedad"),
-    path("aboutas/",about_as)
+    path("formulario/", views.formularioview, name = "add_propiedad"),
+    path("aboutas/",views.about_as),
+    path("perfil/<str:usuario>",views.perfil, name = "perfil"),
+    path("eliminar-propiedad/<id>/",views.eliminar_propiedad, name = 'eliminar_propiedad')
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
  

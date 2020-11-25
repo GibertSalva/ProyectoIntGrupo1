@@ -1,0 +1,34 @@
+{% extends 'Inmobibliaria/base.html' %}
+
+{% block content %}
+<div class="container">
+          <div class="row" style="margin-bottom: 0;">
+            <div class="col s12 m8 offset-m1 xl7 offset-xl1 center-on-small-only">
+              <h1 class="header amber-text text-darken-2">{{user.username}}</h1>
+              <h4 class="light">Propiedades:</h4>
+            </div>
+          </div>
+<table>
+    <th>Titulo</th>
+    <th>Ubicación</th>
+    <th>Precio</th>
+    <th>Tipo</th>
+    <th>Estado</th>
+
+
+{% for pro in propiedades %}
+    <tr>
+        <td>{{pro.titulo}}</td>
+        <td>{{pro.ubicacion}}</td>
+        <td>{{pro.precio}}</td>
+        <td>{{pro.tipo}}</td>
+        <td>{{pro.estado}}</td>
+        <td>
+            <a href="{% url 'eliminar_propiedad' pro.id %}" class="waves-effect waves-light btn">Eliminar</a>
+        </td>
+    </tr>
+
+{% endfor %}
+</table>
+</div>
+{% endblock %}
