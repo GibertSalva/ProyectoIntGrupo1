@@ -1,0 +1,120 @@
+{% extends 'Inmobibliaria/base.html' %}
+
+{% block content %}
+{% load static %}
+<div style="height: 500px;" class="parallax-container">
+    <div class="parallax"><img src="https://imagenes.milenio.com/nMka4WGYmnIN_4SJf_fmDAWQzao=/958x596/https://www.milenio.com/uploads/media/2019/11/11/ferias-inmobiliarias-puedes-obtener-promociones.jpg"></div>
+  </div>
+<main><div class="section" id="index-banner">
+    <div class="container">
+      <div class="row" style="margin-bottom: 0;">
+        <div class="col s12 m8 offset-m1 xl7 offset-xl1 center-on-small-only">
+          <h1 class="header amber-text text-darken-2">¡Bienvenidos!</h1>
+          <h4 class="light">La primer Inmobiliaria Online en donde podrás publicar todas tus propiedades</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  
+  
+  <div class="container">
+    <!--  Outer row  -->
+    <div class="row">
+      <div class="col s12 m8 offset-m1 xl7 offset-xl1 center-on-small-only">
+        <!--  Material Design -->
+        <div id="materialdesign" class="section scrollspy">
+          <h2 class="header amber-text text-darken-2">Inmobiliaria Oclipo</h2>
+          <p class="caption">En esta pagina Web nos podemos dar los lujos de publicar y promocionar cada una de nuestras propieades 
+              con el fin de encontrar personas interesadas en ellas y asi lograr tu objetivo, ya sea vender o alquilar dicha propiedad.
+              A su vez si el motivo por el cual estas aca es encontrar la propiedad de tus sueños, podrás navegar a través de la página 
+              Web comodamente cuando quieras y desde donde quieras y asi lograr alcanzar esa casa que siempre quisiste.  
+          </p>
+        
+        </div>
+  
+        <!--  About the Team-->
+        <div id="team" class="section scrollspy">
+          <h2 class="header amber-text text-darken-2 ">Conoce a los creadores</h2>
+          <p class="caption">Somos un grupo de estudiantes del ITS Villada, destacados en la asignatura de Programación y con grandes objetivos a futuro en el rubro</p>
+          <br>
+        </div>
+  
+          <div>
+            <div class="card-panel grey lighten-5 z-depth-1">
+              <div class="row valign-wrapper">
+                <div class="col s12 m4">
+                  <img src="{% static 'licho.jpeg' %}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                </div>
+                <div class="col s10">
+                  <span class="black-text">
+                    Lisandro Lucero es un programador destacado por su creatividad y reconocido nacionalmente por sus ideas innovadoras a 
+                    la hora de trabajar. Otra característica que lo distingue del resto es su esmero y voluntad con la que trabaja.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div>
+            <div class="card-panel grey lighten-5 z-depth-1">
+              <div class="row valign-wrapper">
+                <div class="col s12 m4">
+                  <img src="{% static 'porte.jpeg' %}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                </div>
+                <div class="col s10">
+                  <span class="black-text">
+                    Salvador "Porteño" Gibert es un experimentado programador, con una capacidad increíble de resolver problemas.
+                    A su vez tiene una envidiable virtud a la hora de trabajar en grupos. 
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="card-panel grey lighten-5 z-depth-1">
+              <div class="row valign-wrapper">
+                <div class="col s12 m4">
+                  <img src="{% static 'octi.jpg' %}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                </div>
+                <div class="col s10">
+                  <span class="black-text">
+                    Octavio Testa es un famoso programador argentino que ha sido ganador del premio "Promesa de la Programación" por cuatro
+                    años consecutivos. Muchas empresas se han visto interesadas en él, pero por el momento, Octavio prioriza sus estudios.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+
+        </div>
+  
+      
+      <!-- Table of Contents -->
+      <div class="col hide-on-small-only m3 xl3 offset-xl1">
+        <div class="toc-wrapper pin-top" style="top: 0px;">
+          <div style="height: 1px;">
+            <ul class="section table-of-contents ">
+              <li><a href="#materialdesign"  class="active">Inmobiliaria Oclipo</a></li>
+              <li><a href="#team" class="">Conoce a los creadores</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div> <!-- End Container -->
+  
+      </main>
+
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.parallax');
+    var instances = M.Parallax.init(elems);
+  });
+</script>
+
+{% include 'Inmobibliaria/footer.html' %}
+{% endblock %}

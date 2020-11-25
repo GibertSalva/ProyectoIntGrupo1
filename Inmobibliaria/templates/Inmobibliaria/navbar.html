@@ -6,7 +6,7 @@
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down text-warning">
           <li><a href="/" ><i class="medium material-icons  ">home</i></a>
-          <li><a href="" class="">Sobre Nosotros</a></li>
+          <li><a href="/aboutas" class="">Sobre Nosotros</a></li>
 
 {% if user.is_authenticated %}
             <li><a href="/logout" class="">Log Out</a></li>
@@ -23,7 +23,7 @@
   </div>
   <ul class="sidenav" id="mobile-demo">
     <li><a href="/" class="amber-text text-darken-2">Inicio</a></li>
-    <li><a href="#" class="">Sobre Nosotros</a></li>
+    <li><a href="/aboutas" class="">Sobre Nosotros</a></li>
     {% if user.is_authenticated %}
       <li><a href="" class="amber-text text-darken-2">{{user.username}}</a></li>
       <li><a href="/logout" class="">Cerrar Cesión</a></li>

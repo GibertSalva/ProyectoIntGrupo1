@@ -21,6 +21,9 @@ def homeview(request):
         imagenes.append(imagen.foto) #Agrego su nombre
     return render(request, "Inmobibliaria/home.html",{'propiedades':propiedades, 'imagenes':imagenes})
 
+def about_as(request):
+    return render(request,'Inmobibliaria/aboutas.html')
+
 def propiedadview(request,id):
     propiedad = Propiedad.objects.get(id = id)
     imagenesLibro = Imagen.objects.filter(propiedad = propiedad)
