@@ -30,7 +30,7 @@ def perfil(request, usuario):
 
     data = {
         'propiedades':propiedades,
-        'user':user
+        'usuario':user
     }
 
     return render(request,'Inmobibliaria/perfil.html',data)

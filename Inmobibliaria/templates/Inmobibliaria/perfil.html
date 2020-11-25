@@ -23,9 +23,11 @@
         <td>{{pro.precio}}</td>
         <td>{{pro.tipo}}</td>
         <td>{{pro.estado}}</td>
-        <td>
-            <a href="{% url 'eliminar_propiedad' pro.id %}" class="waves-effect waves-light btn">Eliminar</a>
-        </td>
+        {% if user == usuario %}
+            <td>
+                <a href="{% url 'eliminar_propiedad' pro.id %}" class="waves-effect waves-light btn">Eliminar</a>
+            </td>
+        {% endif %}
     </tr>
 
 {% endfor %}
